@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
 import { v4 as uuidv4 } from 'uuid';
-import RoomScreen from './RoomScreen';
+import RoomScreen from './pages/RoomScreen';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NavigationBar from './components/NavigationBar';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Data from './pages/Datascreen';
+
 
 function App() {
 
-
-  // useEffect(() => {
-  //   setAppState({ loading: true });
-  //   const apiUrl = `https://api.github.com/users/hacktivist123/repos`;
-  //   fetch(apiUrl)
-  //     .then((res) => res.json())
-  //     .then((repos) => {
-  //       setAppState({ loading: false, repos: repos });
-  //     });
-  // }, [setAppState]);
-  
+ 
   return (
-    <RoomScreen />
+
+    <>
+    <BrowserRouter>
+    <NavigationBar />
+      <Routes>
+          <Route path="/rooms" element={ <RoomScreen/>} />
+          <Route path="/data" element={ <Data/>} />
+ 
+      </Routes>
+    </BrowserRouter>
+    </>
   );
 }
 export default App;
