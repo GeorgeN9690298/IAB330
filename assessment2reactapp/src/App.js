@@ -16,9 +16,8 @@ function App() {
     <BrowserRouter>
     <NavigationBar />
       <Routes>
-          <Route path="/rooms" element={ <RoomScreen/>} />
+          <Route path="/" element={ <RoomScreen/>} />
           <Route path="/data" element={ <Data/>} />
- 
       </Routes>
     </BrowserRouter>
     </>

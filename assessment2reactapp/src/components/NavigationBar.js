@@ -14,7 +14,7 @@ return (
 <div className="justify-content-end">
  <Navbar className="" color="dark" dark>
 {/* Home Button */}
-    <NavbarBrand href="/rooms">
+    <NavbarBrand href="/">
       <img alt="home_logo" src="/homelogo.png" style={{height: 50, width: 50}}/>
       </NavbarBrand>
 
