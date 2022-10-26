@@ -6,15 +6,28 @@ const Sequelize = require('sequelize');
 const process = require('process');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+const config = require(__dirname + '/../config/config.js')[env];
 const db = {};
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+// Initialize the sequelize object
+let sequelize = new Sequelize({
+  host: config.host,
+  username: config.username,
+  password: config.password,
+  port: config.port,
+  database: config.database,
+  dialect: config.dialect,
+});
+
+// check database connection
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("success");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 fs
   .readdirSync(__dirname)
@@ -33,6 +46,5 @@ Object.keys(db).forEach(modelName => {
 });
 
 db.sequelize = sequelize;
-db.Sequelize = Sequelize;
 
 module.exports = db;

@@ -6,8 +6,8 @@ import App from './App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <>
-    <div className="body">
-    <App />
-    </div>
+        <div className="body">
+            <App />
+        </div>
     </>
 );

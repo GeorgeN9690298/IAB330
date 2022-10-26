@@ -9,17 +9,17 @@ import Data from './pages/Datascreen';
 
 function App() {
 
- 
+
   return (
 
     <>
-    <BrowserRouter>
-    <NavigationBar />
-      <Routes>
-          <Route path="/" element={ <RoomScreen/>} />
-          <Route path="/data" element={ <Data/>} />
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <NavigationBar />
+        <Routes>
+          <Route path="/" element={<RoomScreen />} />
+          <Route path="/data" element={<Data />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
