@@ -6,8 +6,40 @@ Chart.register(BarElement, CategoryScale, LinearScale, ArcElement, Title, Toolti
 
 export default function Data() {
     // placeholder
-    const [roomData, setRoomData] = useState([]);
+    const [pressurevalue, setPressureValue] = useState([]);
+    const [lockid, setLockID] = useState([]);
+    const [timestamp, setTimestamp] = useState([]);
+    const [serialid, setSerialID] = useState([]);
+    const [room, setRoom] = useState([]);
 
+    //retrieve room number from database
+    useEffect(() => {
+      fetch("")
+      .then(res => res.json())
+      .then(serialid => setSerialID(serialid))
+    }, []);
+
+    //retrieve timestamp for received value from database
+    useEffect(() => {
+      fetch("")
+      .then(res => res.json())
+      .then(timestamp => setTimestamp(timestamp))
+    }, []);
+
+    //retrieve lock id for an entered room
+    useEffect(() => {
+      fetch("")
+      .then(res => res.json())
+      .then(lockid => setLockID(lockid))
+    }, []);
+
+    //retrieve and set pressure values from nodered for graph display
+    useEffect(() => {
+      fetch("")
+      .then(res => res.json())
+      .then(pressurevalue => setPressureValue(pressurevalue))
+    }, []);
+   
     //set the options for highest usage pie chart
     const usageOptions = {
         responsive: true,
@@ -22,15 +54,15 @@ export default function Data() {
         },
       };
 
-    //set the highest usage chart data labels (***placeholder currently***)
-    const usageLabels = ['a', 'b', 'c'];
+    //set the highest usage chart data labels 
+    const usageLabels = [{timestamp}];
 
     //set up data for the highest room usage pie graph data
     const usageData = {
       labels: usageLabels,
       datasets: [{
         label: 'Traffic',
-        data: [1, 2, 3],
+        data: [{lockid}],
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
         borderColor: 'rgba(53, 162, 235)',
         borderWidth: 1
@@ -53,17 +85,17 @@ export default function Data() {
 
     //set data settings for individual room, most of this is placeholder
     const roomBarData = {
-        labels: ["8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+        labels: [{timestamp}],
         datasets: [{
             label: 'Occupancy',
-            data: [1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1],
+            data: [{pressurevalue}],
             backgroundColor: 'rgba(53, 162, 235, 0.5)',
             borderColor: 'rgba(53, 162, 235)',
             borderWidth: 1
         }],
     }
 
-    // Data that is returned on page
+    //Data/Components that are returned on page
     return(
         <div className="container">
             <div className="row">
@@ -75,10 +107,12 @@ export default function Data() {
                     <Pie options={usageOptions} data={usageData} />
                 </div>            
                 <div className="col-4">
-                
-                <button value="1">Room 1</button>
-                <button value="2">Room 2</button>
-                
+                  <select onChange={(e) => setRoom(e.target.value)}>
+                  <option>Select Room</option>
+                  {serialid.map((serialid) => (
+                    <option value={serialid}>{serialid}</option>
+                  ))}
+                  </select>
                 </div>
             </div>
             <div className="row">
