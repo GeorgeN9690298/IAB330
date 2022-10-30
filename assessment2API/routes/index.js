@@ -11,6 +11,9 @@ router.get("/", function (req, res) {});
 /* GET2 Door Lock and Mat Data filtered by Door Lock */
 router.get("/", function (req, res) {});
 
+/* GET Lock and Timestamp Data filtered by Lock */
+router.get("/", function (req, res) {});
+
 /* GET Mat and Timestamp data filter by Door Lock*/
 router.get("/", function (req, res) {});
 
