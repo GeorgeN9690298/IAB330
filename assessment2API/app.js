@@ -12,7 +12,7 @@ const port = process.env.port || 3000;
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
-const knex = required("knex")({
+const knex = require("knex")({
   client: "pg",
   version: "14.5",
   connection: {
@@ -24,7 +24,7 @@ const knex = required("knex")({
   },
 });
 
-const pg = requre("knex")({
+const pg = require("knex")({
   client: "pg",
   connection: process.env.PG_CONNECTION_STRING,
   searchPath: ["knex", "public"],
