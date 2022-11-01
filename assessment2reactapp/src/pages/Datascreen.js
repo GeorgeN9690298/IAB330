@@ -35,7 +35,7 @@ export default function Data() {
 
     //retrieve and set pressure values from nodered for graph display
     useEffect(() => {
-      fetch("http://44.211.4.25/mat&time/${room}")
+      fetch(`http://44.211.4.25/mat&time/${room}`)
       .then(res => res.json())
       .then(pressurevalue => setPressureValue(pressurevalue))
     }, []);
