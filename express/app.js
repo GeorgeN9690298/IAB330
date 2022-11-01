@@ -9,7 +9,7 @@ var app = express();
 const options = require("./knexfile.js");
 const knex = require("knex")(options);
 
-app.use((req, res, next) => {
+app.use((req, next) => {
   req.db = knex;
   next();
 });
