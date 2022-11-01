@@ -5,6 +5,28 @@ router.get("/sensor", function (req, res) {
     console.log("API is called");
 });
 
+ // GET timestamp
+ router.get("/time", function (req, res) {
+    const rawData = db("SELECT timestamp FROM iab330nodered");
+    const filteredData = rawData.find(data => data.timestamp === req.params.userid);
+    if(!filteredData){
+        res.status(404).send("No Data Found");    
+    } else {
+        res.json(filteredData);    
+    }
+});
+
+// GET room number
+router.get("/lock", function (req, res) {
+    const rawData = db("SELECT lockid FROM iab330nodered");
+    const filteredData = rawData.find(data => data.lockid === req.params.userid);
+    if(!filteredData){
+        res.status(404).send("No Data Found");    
+    } else {
+        res.json(filteredData);    
+    }
+});
+
     // try {
     //     const allSensors = await db("SELECT pressurematid, pressurevalue FROM iab330nodered");
     //     res.json(allSensors)
@@ -33,7 +55,7 @@ router.get("/user&lock/:userid", function (req, res) {
     // }
 });
 
-/* GET2 Door Lock and Mat Data filtered by Door Lock */
+/* GET Door Lock and Mat Data filtered by Door Lock */
 router.get("/doorlock/:lockid", function (req, res) {
     const rawData = db(
         "SELECT lockid, pressurematid, pressurematvalues FROM iab330nodered"

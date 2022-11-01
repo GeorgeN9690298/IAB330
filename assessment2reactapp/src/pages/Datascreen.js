@@ -14,28 +14,28 @@ export default function Data() {
 
     //retrieve room number from database
     useEffect(() => {
-      fetch("http://44.211.4.25/5432")
+      fetch("http://44.211.4.25/lock")
       .then(res => res.json())
       .then(serialid => setSerialID(serialid))
     }, []);
 
     //retrieve timestamp for received value from database
     useEffect(() => {
-      fetch("http://44.211.4.25/5432")
+      fetch("http://44.211.4.25/time")
       .then(res => res.json())
       .then(timestamp => setTimestamp(timestamp))
     }, []);
 
     //retrieve lock id for an entered room
     useEffect(() => {
-      fetch("http://44.211.4.25/5432")
+      fetch("http://44.211.4.25/lock")
       .then(res => res.json())
       .then(lockid => setLockID(lockid))
     }, []);
 
     //retrieve and set pressure values from nodered for graph display
     useEffect(() => {
-      fetch("http://44.211.4.25/5432")
+      fetch("http://44.211.4.25/mat&time/${room}")
       .then(res => res.json())
       .then(pressurevalue => setPressureValue(pressurevalue))
     }, []);
