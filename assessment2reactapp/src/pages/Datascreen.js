@@ -5,7 +5,7 @@ import {Chart, CategoryScale, LinearScale, BarElement, ArcElement, Title, Toolti
 Chart.register(BarElement, CategoryScale, LinearScale, ArcElement, Title, Tooltip);
 
 export default function Data() {
-    // placeholder
+    // initialise values to be updated from requests to database
     const [pressurevalue, setPressureValue] = useState([]);
     const [lockid, setLockID] = useState([]);
     const [timestamp, setTimestamp] = useState([]);
