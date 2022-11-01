@@ -1,11 +1,16 @@
 var express = require("express");
 var router = express.Router();
 
-/* GET home page. */
-router.get("/", function (req, res, next) {
+/* GET ALL */
+router.get("/all", function (req, res, next) {
+  req.db.from;
+});
+
+/* GET timestamp */
+router.get("/timestamp", function (req, res, next) {
   req.db
     .from("brisbane_gp")
-    .select("serialid")
+    .select("timestamp")
     .then((rows) => {
       res.json({ Data: rows });
     })
