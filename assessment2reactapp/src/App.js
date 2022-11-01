@@ -7,12 +7,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Data from './pages/Datascreen';
 
 
+// main App
 function App() {
 
 
   return (
 
     <>
+    {/* Browser Router to access pages and Navigation Bar */}
       <BrowserRouter>
         <NavigationBar />
         <Routes>
