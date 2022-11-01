@@ -14,28 +14,28 @@ export default function Data() {
 
     //retrieve room number from database
     useEffect(() => {
-      fetch("http://44.211.4.25/lock")
+      fetch("https://github.com/GeorgeN9690298/IAB330/assessment2API/QueryDB/lock.git") //http://44.211.4.25/lock
       .then(res => res.json())
       .then(serialid => setSerialID(serialid))
     }, []);
 
     //retrieve timestamp for received value from database
     useEffect(() => {
-      fetch("http://44.211.4.25/time")
+      fetch("https://github.com/GeorgeN9690298/IAB330/assessment2API/QueryDB/time.git")
       .then(res => res.json())
       .then(timestamp => setTimestamp(timestamp))
     }, []);
 
     //retrieve lock id for an entered room
     useEffect(() => {
-      fetch("http://44.211.4.25/lock")
+      fetch("https://github.com/GeorgeN9690298/IAB330/assessment2API/QueryDB/lock.git")
       .then(res => res.json())
       .then(lockid => setLockID(lockid))
     }, []);
 
     //retrieve and set pressure values from nodered for graph display
     useEffect(() => {
-      fetch(`http://44.211.4.25/mat&time/${room}`)
+      fetch(`https://github.com/GeorgeN9690298/IAB330/assessment2API/QueryDB/mat&time/${room}.git`)
       .then(res => res.json())
       .then(pressurevalue => setPressureValue(pressurevalue))
     }, []);
@@ -99,7 +99,7 @@ export default function Data() {
     return(
         <div className="container">
             <div className="row">
-                <h1>Room Usage Data</h1>
+                <h1>Room Usage Data {serialid} here</h1>
             </div>
             
             <div className="row">
