@@ -11,7 +11,7 @@ const knex = require("knex")(options);
 
 app.use((req, next) => {
   req.db = knex;
-  next();
+  return next();
 });
 
 /* CONNECTION TEST */
