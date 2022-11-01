@@ -12,33 +12,33 @@ export default function Data() {
     const [serialid, setSerialID] = useState([]);
     const [room, setRoom] = useState([]);
 
-    //retrieve room number from database
+    /* //retrieve room number from database
     useEffect(() => {
-      fetch("https://github.com/GeorgeN9690298/IAB330/assessment2API/QueryDB/lock.git") //http://44.211.4.25/lock
+      fetch("http://www.randomnumberapi.com/api/v1.0/random?min=1&max=10&count=10") //http://44.211.4.25/lock
       .then(res => res.json())
       .then(serialid => setSerialID(serialid))
     }, []);
 
     //retrieve timestamp for received value from database
     useEffect(() => {
-      fetch("https://github.com/GeorgeN9690298/IAB330/assessment2API/QueryDB/time.git")
+      fetch("http://www.randomnumberapi.com/api/v1.0/random?min=10&max=1000&count=1")
       .then(res => res.json())
       .then(timestamp => setTimestamp(timestamp))
     }, []);
 
     //retrieve lock id for an entered room
     useEffect(() => {
-      fetch("https://github.com/GeorgeN9690298/IAB330/assessment2API/QueryDB/lock.git")
+      fetch("http://www.randomnumberapi.com/api/v1.0/random?min=1&max=10&count=1")
       .then(res => res.json())
       .then(lockid => setLockID(lockid))
     }, []);
 
     //retrieve and set pressure values from nodered for graph display
     useEffect(() => {
-      fetch(`https://github.com/GeorgeN9690298/IAB330/assessment2API/QueryDB/mat&time/${room}.git`)
+      fetch("http://www.randomnumberapi.com/api/v1.0/random?min=0&max=3&count=10")
       .then(res => res.json())
       .then(pressurevalue => setPressureValue(pressurevalue))
-    }, []);
+    }, []); */
    
     //set the options for highest usage pie chart
     const usageOptions = {
@@ -55,14 +55,14 @@ export default function Data() {
       };
 
     //set the highest usage chart data labels 
-    const usageLabels = [{timestamp}];
+    const usageLabels = [1, 2, 3, 4, 5, 6, 7];
 
     //set up data for the highest room usage pie graph data
     const usageData = {
       labels: usageLabels,
       datasets: [{
         label: 'Traffic',
-        data: [{lockid}],
+        data: [1, 2, 3, 4, 5, 6, 7],
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
         borderColor: 'rgba(53, 162, 235)',
         borderWidth: 1
@@ -85,10 +85,10 @@ export default function Data() {
 
     //set data settings for individual room, most of this is placeholder
     const roomBarData = {
-        labels: [{timestamp}],
+        labels: [9.00, 10.00, 11.00, 12.00, 13.00, 14.00, 15.00],
         datasets: [{
             label: 'Occupancy',
-            data: [{pressurevalue}],
+            data: [0, 2, 1, 0, 0, 2, 1],
             backgroundColor: 'rgba(53, 162, 235, 0.5)',
             borderColor: 'rgba(53, 162, 235)',
             borderWidth: 1
@@ -99,7 +99,7 @@ export default function Data() {
     return(
         <div className="container">
             <div className="row">
-                <h1>Room Usage Data {serialid} here</h1>
+                <h1>Room Usage Data</h1>
             </div>
             
             <div className="row">
@@ -109,9 +109,12 @@ export default function Data() {
                 <div className="col-4">
                   <select onChange={(e) => setRoom(e.target.value)}>
                   <option>Select Room</option>
-                  {serialid.map((serialid) => (
+                  {/* {serialid.map((serialid) => (
                     <option value={serialid}>{serialid}</option>
-                  ))}
+                  ))} */}
+                  <option>Room 1</option>
+                  <option>Room 2</option>
+                  <option>Room 3</option>
                   </select>
                 </div>
             </div>
