@@ -2,20 +2,7 @@ import React from 'react';
 import { Card, CardBody, CardTitle, CardSubtitle, CardText, Progress } from 'reactstrap';
 
 // function to create Rooms displayed on main screen
-const RoomsDisplay = ({ movie }) => {
-
-  // function to display Vacant room 
-  const Vacant = () => {
-    return <div>
-      <Progress animated color="success" value={100}> VACANT </Progress>
-    </div>
-  }
-  // function to display Occupied room
-  const Occupied = () => {
-    return <div>
-      <Progress animated color="danger" value={100}> OCCUPIED </Progress>
-    </div>
-  }
+const RoomsDisplay = (props) => {
 
   return (
     <>
@@ -25,20 +12,18 @@ const RoomsDisplay = ({ movie }) => {
         <img alt="Room" src="https://img.freepik.com/premium-vector/medical-background-simple-white-door-with-cross-icon-announcement-desk-blue-wall-background-doctors-room-realistic-illustration-landscape-healthcare-banner-with-copy-space_261737-5.jpg?w=2000" />
         <CardBody>
           <CardTitle tag="h5">
-            {/* Doctor Name THIS WILL BE CHANGED TO DOCTOR'S LAST NAME*/}
-            Doctor: {movie.Title}
+            {/* Doctor Name - this is used to display the Doctor/Nurses names on the card */}
+            Doctor: {props.name}
           </CardTitle>
-          {/* Room Number THIS WILL BE CHANGED TO THE ACTUAL ROOM NUMBER*/}
+          {/* {/* Room Number - this is used to display the room number on the card  */}
           <CardSubtitle
             className="mb-2"
-            tag="h6"> Room: {movie.imdbID}
+            tag="h6"> Room: {props.room}
           </CardSubtitle>
         </CardBody>
-        {/* Room Occupancy THIS WILL BE CHANGED TO REFLECT THE PRESSURE VALUE */}
-        {movie.Year > '2007' ? Occupied() : Vacant()}
-
+        {/* Room Occupancy - this is used to show room vacancy on the card*/}
+        {props.roomVacancy}
       </Card>
-
     </>
   )
 }

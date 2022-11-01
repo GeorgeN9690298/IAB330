@@ -10,7 +10,6 @@ export default function NavigationBar() {
 
       return (
             <>
-
                   <div className="justify-content-end">
                         <Navbar className="" color="dark" dark>
                               {/* Home Button */}
